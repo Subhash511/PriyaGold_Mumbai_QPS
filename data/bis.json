@@ -1,6 +1,6 @@
 {
     "Mumbai": {
-        "J K BROTHERS": {
+        "J K BROS ": {
             "BALWANT & CO": {
                 "password": 5694,
                 "wholesalers": [
@@ -48,6 +48,55 @@
                     "BIND TOBACCO_( PRATIKSHA NAGAR )| Target = 10 |"
                 ]
             },
+            "GAJANAN GRAIN STORES": {
+                "password": 5527,
+                "wholesalers": [
+                    "NUTAN STORE_( JIJA MATA NAGAR )| Target = 10 |",
+                    "PARAMOUNT STORE_( JIJA MATA NAGAR )| Target = 10 |",
+                    "RAJU STORE_( JIJA MATA NAGAR )| Target = 10 |",
+                    "HARIOM STORE_( JIJA MATA NAGAR )| Target = 10 |",
+                    "B. K. JARDA_( B. D. D. CHAWL )| Target = 10 |",
+                    "AFZAL STORE_( B. D. D. CHAWL )| Target = 10 |"
+                ]
+            },
+            "GANGA SALES": {
+                "password": 7933,
+                "wholesalers": [
+                    "BIND TBO_( PRATICSHA NAGAR )| Target = 30 |",
+                    "ANSARI TOB _( MHADACOLNY )| Target = 30 |",
+                    "GANESH TOBC_( MHADACOLNY )| Target = 30 |",
+                    "SANDEEP HOLSAL_( SANGAM NAGAR )| Target = 30 |",
+                    "NAVYANSH TOB_( SANGAMNAGAR )| Target = 20 |",
+                    "BALAJI TOB_( SANGAM NAGAR )| Target = 20 |",
+                    "JYOTI STOTR_( NAIK NAGAR )| Target = 20 |",
+                    "DAIMAND _( SANGMNAGAR )| Target = 20 |",
+                    "VARDMAN _( SANGAMNAGAR )| Target = 20 |",
+                    "MHALXMIHOL_( SANGAMNAGAR )| Target = 20 |",
+                    "K G N HOLSAL_( ANTOP HIL )| Target = 20 |",
+                    "GUDU HOL_( SANGAMNAGAR )| Target = 10 |",
+                    "PRAVIN TOB_( SANGAM NAGAR )| Target = 10 |",
+                    "NASEEM WHOLESALE_( NAIK NAGAR 2 )| Target = 10 |",
+                    "BHARAT WHOLESALE_( KOLIWADA SION )| Target = 10 |",
+                    "DAIMOND WHOLESALE_( SANGAM NAGAR 1 )| Target = 10 |",
+                    "VARDHMAN STORE_( Naik nagar 1 )| Target = 10 |",
+                    "MAHALAXMI STORE_( SANGAM NAGAR 1 )| Target = 10 |",
+                    "P. JAISWAL_( WADALA 1 )| Target = 10 |",
+                    "MUKESH SOLANKI_( BARKAT ALI ROAD )| Target = 10 |",
+                    "NEW MAHALAXMI_( BARKAT ALI ROAD )| Target = 10 |",
+                    "JANTA WHOLESALE_( SANGAM NAGAR 1 )| Target = 10 |",
+                    "NASEEM WHOLESALE_( ANTOP HIL 1 )| Target = 10 |",
+                    "BHARAT WHOLESALE_( SION KOLIWADA )| Target = 10 |"
+                ]
+            },
+            "SHREE RAM AGENCY": {
+                "password": 1022,
+                "wholesalers": [
+                    "SPECIAL CHIKKI_( SHIWDI )| Target = 10 |",
+                    "BHARAT TOBACCO_( SHIWDI )| Target = 10 |"
+                ]
+            }
+        },
+        "J K BROTHERS": {
             "DURGA SELS": {
                 "password": 4111,
                 "wholesalers": [
@@ -127,46 +176,6 @@
                     "REZAWAN TOB_( KAMLARAMAN  )| Target = 10 |",
                     "F K SUPARI_( BAIGANWADI )| Target = 10 |",
                     "AISHA TOB_( BAIGANWADI )| Target = 10 |"
-                ]
-            },
-            "GAJANAN GRAIN STORES": {
-                "password": 5527,
-                "wholesalers": [
-                    "NUTAN STORE_( JIJA MATA NAGAR )| Target = 10 |",
-                    "PARAMOUNT STORE_( JIJA MATA NAGAR )| Target = 10 |",
-                    "RAJU STORE_( JIJA MATA NAGAR )| Target = 10 |",
-                    "HARIOM STORE_( JIJA MATA NAGAR )| Target = 10 |",
-                    "B. K. JARDA_( B. D. D. CHAWL )| Target = 10 |",
-                    "AFZAL STORE_( B. D. D. CHAWL )| Target = 10 |"
-                ]
-            },
-            "GANGA SALES": {
-                "password": 7933,
-                "wholesalers": [
-                    "BIND TBO_( PRATICSHA NAGAR )| Target = 30 |",
-                    "ANSARI TOB _( MHADACOLNY )| Target = 30 |",
-                    "GANESH TOBC_( MHADACOLNY )| Target = 30 |",
-                    "SANDEEP HOLSAL_( SANGAM NAGAR )| Target = 30 |",
-                    "NAVYANSH TOB_( SANGAMNAGAR )| Target = 20 |",
-                    "BALAJI TOB_( SANGAM NAGAR )| Target = 20 |",
-                    "JYOTI STOTR_( NAIK NAGAR )| Target = 20 |",
-                    "DAIMAND _( SANGMNAGAR )| Target = 20 |",
-                    "VARDMAN _( SANGAMNAGAR )| Target = 20 |",
-                    "MHALXMIHOL_( SANGAMNAGAR )| Target = 20 |",
-                    "K G N HOLSAL_( ANTOP HIL )| Target = 20 |",
-                    "GUDU HOL_( SANGAMNAGAR )| Target = 10 |",
-                    "PRAVIN TOB_( SANGAM NAGAR )| Target = 10 |",
-                    "NASEEM WHOLESALE_( NAIK NAGAR 2 )| Target = 10 |",
-                    "BHARAT WHOLESALE_( KOLIWADA SION )| Target = 10 |",
-                    "DAIMOND WHOLESALE_( SANGAM NAGAR 1 )| Target = 10 |",
-                    "VARDHMAN STORE_( Naik nagar 1 )| Target = 10 |",
-                    "MAHALAXMI STORE_( SANGAM NAGAR 1 )| Target = 10 |",
-                    "P. JAISWAL_( WADALA 1 )| Target = 10 |",
-                    "MUKESH SOLANKI_( BARKAT ALI ROAD )| Target = 10 |",
-                    "NEW MAHALAXMI_( BARKAT ALI ROAD )| Target = 10 |",
-                    "JANTA WHOLESALE_( SANGAM NAGAR 1 )| Target = 10 |",
-                    "NASEEM WHOLESALE_( ANTOP HIL 1 )| Target = 10 |",
-                    "BHARAT WHOLESALE_( SION KOLIWADA )| Target = 10 |"
                 ]
             },
             "KUMAR STORE": {
@@ -299,13 +308,6 @@
                     "NAVAR TOB_( PRATAPNAGAR )| Target = 10 |",
                     "RAJ TOB_( KANJUR ST )| Target = 10 |",
                     "GANESH TOB_( KANJUR ST )| Target = 10 |"
-                ]
-            },
-            "SHREE RAM AGENCY": {
-                "password": 1022,
-                "wholesalers": [
-                    "SPECIAL CHIKKI_( SHIWDI )| Target = 10 |",
-                    "BHARAT TOBACCO_( SHIWDI )| Target = 10 |"
                 ]
             },
             "V S MARKETING": {
