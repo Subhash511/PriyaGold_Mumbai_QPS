@@ -254,14 +254,14 @@ document.getElementById("qpsForm").addEventListener("submit", function(e) {
       formData.append("salesQty", document.getElementById("salesQty").value);
       formData.append("date", document.getElementById("date").value);
       formData.append("billNo", document.getElementById("billNo").value);
-      formData.append("billPhoto", base64BillPhoto);
-      formData.append("product", "Biscuit");
-
+      // formData.append("billPhoto", base64BillPhoto);
+      // formData.append("product", "Biscuit");
+      console.log(formData)
       // Show spinner and disable button
       document.getElementById("loadingSpinner").style.display = "block";
       submitBtn.disabled = true;
 
-      fetch("https://script.google.com/macros/s/AKfycbySgYgzw2dA6vQunf0w3u75yTyl4Zt-XRksPedaYCiNW8lEDzeJFNj03VGAaE_tVmu3/exec", {
+      fetch("http://127.0.0.1:5000/submit", {
         method: "POST",
         body: formData
       })
