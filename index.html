@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Whole Seller QPS Scheme</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      padding: 30px;
+    }
+    .form-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 700px;
+      margin: auto;
+    }
+    .form-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .form-header img {
+      height: 60px;
+      margin-bottom: 10px;
+    }
+    .form-header h2 {
+      font-weight: bold;
+      color: #343a40;
+    }
+     .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+      flex-wrap: wrap; /* Makes it responsive */
+    }
+
+    .button-container a {
+      display: inline-block;
+      padding: 12px 20px;
+      background-color: #28a745; /* Bootstrap green */
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .button-container a:hover {
+      background-color: #218838; /* Darker green on hover */
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-container">
+  <div class="form-header">
+    <img src="data/logo.jpg" alt="Logo">
+    <h2>Whole Seller QPS Scheme</h2>
+    <h3 style="color: crimson;">Biscuit Scheme Open Till 30-June-25</h2>
+  </div>
+
+
+  <form id="qpsForm" enctype="multipart/form-data">
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="state" class="form-label">State</label>
+        <select id="state" class="form-select" required></select>
+      </div>
+      <div class="col-md-6">
+        <label for="ss" class="form-label">SS Name</label>
+        <select id="ss" class="form-select" required></select>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="db" class="form-label">DB Name</label>
+        <select id="db" class="form-select" required></select>
+      </div>
+      <div class="col-md-6">
+        <label for="ws" class="form-label">Whole Saler</label>
+        <select id="ws" class="form-select" required></select>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="dbPassword" class="form-label">DB Password</label>
+      <input type="password" class="form-control" id="dbPassword" placeholder="Enter DB Password" required>
+      <div class="invalid-feedback">Incorrect password. Please try again.</div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="salesQty" class="form-label">Sales Qty</label>
+        <input type="number" class="form-control" id="salesQty" min="1" required>
+        <div class="error text-danger" id="salesQtyError"></div>
+      </div>
+      <div class="col-md-6">
+        <label for="date" class="form-label">Date</label>
+        <input type="date" class="form-control" id="date" min="2025-05-01" max="2025-05-31" required>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="billNo" class="form-label">Bill Number</label>
+      <input type="text" class="form-control" id="billNo" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="billPhoto" class="form-label">Upload Bill Photo</label>
+      <input type="file" class="form-control" id="billPhoto" accept="image/*" required>
+    </div>
+
+    <button type="submit" id="submitBtn" class="btn btn-primary w-100" disabled>Submit</button>
+  </form>
+<br>
+<br>
+  <div id="formAlert"></div>
+  <br>
+  <div id="loadingSpinner" class="text-center" style="display: none;">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Submitting...</span>
+  </div>
+  <p class="mt-2">Submitting, please wait...</p>
+</div>
+<div class="button-container">
+  <a href="index2.html">Click for Conf. Billing</a>
+  <a href="billing.html">Check Your Bills</a>
+</div>
+<br>
+<br>
+<h5>Mumbai Scheme Photo</h5>
+<img src="images/scheme-photo.jpg" alt="Banner" class="img-fluid rounded mb-3" style="max-width: 100%; height: auto;">
+<br>
+<br>
+
+
+
+
+</div>
+
+<script>
+let data = {};
+fetch("data/bis.json")
+  .then(res => res.json())
+  .then(json => {
+    data = json;
+    populateStates();
+  });
+
+const stateSel = document.getElementById("state");
+const ssSel = document.getElementById("ss");
+const dbSel = document.getElementById("db");
+const wsSel = document.getElementById("ws");
+const passwordInput = document.getElementById("dbPassword");
+const submitBtn = document.getElementById("submitBtn");
+const formAlert = document.getElementById("formAlert");
+
+function populateStates() {
+  stateSel.innerHTML = `<option value="">Select State</option>`;
+  Object.keys(data).forEach(state => {
+    stateSel.innerHTML += `<option value="${state}">${state}</option>`;
+  });
+}
+
+stateSel.onchange = () => {
+  resetDropdowns(["ss", "db", "ws"]);
+  const ssList = data[stateSel.value] || {};
+  Object.keys(ssList).forEach(ss => {
+    ssSel.innerHTML += `<option value="${ss}">${ss}</option>`;
+  });
+};
+
+ssSel.onchange = () => {
+  resetDropdowns(["db", "ws"]);
+  const dbList = data[stateSel.value]?.[ssSel.value] || {};
+  Object.keys(dbList).forEach(db => {
+    dbSel.innerHTML += `<option value="${db}">${db}</option>`;
+  });
+};
+
+dbSel.onchange = () => {
+  wsSel.innerHTML = `<option value="">Select Whole Saler</option>`;
+  passwordInput.value = "";
+  submitBtn.disabled = true;
+  passwordInput.classList.remove("is-invalid", "is-valid");
+  const selected = data[stateSel.value]?.[ssSel.value]?.[dbSel.value];
+  if (!selected) return;
+  selected.wholesalers.forEach(ws => {
+    wsSel.innerHTML += `<option value="${ws}">${ws}</option>`;
+  });
+};
+
+passwordInput.addEventListener("input", () => {
+  const selected = data[stateSel.value]?.[ssSel.value]?.[dbSel.value];
+  if (!selected) {
+    submitBtn.disabled = true;
+    return;
+  }
+  if (String(passwordInput.value) === String(selected.password)) {
+    submitBtn.disabled = false;
+    passwordInput.classList.remove("is-invalid");
+    passwordInput.classList.add("is-valid");
+  } else {
+    // console.log(passwordInput.value,selected.password);
+    submitBtn.disabled = true;
+    passwordInput.classList.add("is-invalid");
+    passwordInput.classList.remove("is-valid");
+  }
+});
+
+function resetDropdowns(ids) {
+  ids.forEach(id => {
+    document.getElementById(id).innerHTML = `<option value="">Select ${id.toUpperCase()}</option>`;
+  });
+  submitBtn.disabled = true;
+}
+
+// Sales Qty Validation
+function validateForm() {
+  const salesQty = document.getElementById('salesQty').value;
+  const errorDiv = document.getElementById('salesQtyError');
+  if (salesQty <= 0) {
+    errorDiv.textContent = "Sales Qty must be greater than 0.";
+    return false;
+  } else {
+    errorDiv.textContent = "";
+    return true;
+  }
+}
+
+document.getElementById("qpsForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  if (!validateForm()) return;
+
+  const fileInput = document.getElementById("billPhoto");
+  const file = fileInput.files[0];
+
+  if (file) {
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+      const base64BillPhoto = event.target.result;
+
+      const formData = new FormData();
+      formData.append("state", stateSel.value);
+      formData.append("ss", ssSel.value);
+      formData.append("db", dbSel.value);
+      formData.append("ws", wsSel.value);
+      formData.append("dbPassword", passwordInput.value);
+      formData.append("salesQty", document.getElementById("salesQty").value);
+      formData.append("date", document.getElementById("date").value);
+      formData.append("billNo", document.getElementById("billNo").value);
+      formData.append("billPhoto", base64BillPhoto);
+      formData.append("product", "Biscuit");
+
+      // Show spinner and disable button
+      document.getElementById("loadingSpinner").style.display = "block";
+      submitBtn.disabled = true;
+
+      fetch("https://script.google.com/macros/s/AKfycbySgYgzw2dA6vQunf0w3u75yTyl4Zt-XRksPedaYCiNW8lEDzeJFNj03VGAaE_tVmu3/exec", {
+        method: "POST",
+        body: formData
+      })
+      .then(res => {
+        document.getElementById("loadingSpinner").style.display = "none";
+        if (res.ok) {
+          showAlert("Form submitted successfully!", "success");
+          document.getElementById("qpsForm").reset();
+          submitBtn.disabled = true;
+          passwordInput.classList.remove("is-valid");
+        } else {
+          throw new Error("Form submission failed.");
+        }
+      })
+      .catch(err => {
+        document.getElementById("loadingSpinner").style.display = "none";
+        showAlert("An error occurred. Please try again later.", "danger");
+      });
+    };
+
+    reader.readAsDataURL(file);
+  } else {
+    showAlert("Please upload a bill photo.", "warning");
+  }
+});
+
+
+function showAlert(message, type) {
+  const alertHTML = `
+    <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+      ${message}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>`;
+
+  formAlert.innerHTML = alertHTML;
+
+  // Automatically remove the alert after 3 seconds
+  setTimeout(() => {
+    const alertNode = formAlert.querySelector('.alert');
+    if (alertNode) {
+      // Bootstrap 5 fade out
+      alertNode.classList.remove('show');
+      alertNode.classList.add('fade');
+
+      // Remove element after fade-out
+      setTimeout(() => {
+        alertNode.remove();
+      }, 300); // Wait for fade-out transition
+    }
+  }, 3000);
+}
+
+</script>
+
+</body>
+</html>
