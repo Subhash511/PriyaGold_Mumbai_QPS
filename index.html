@@ -128,9 +128,9 @@
 </div>
 
 <div class="button-container">
-  <a href="index2.html">Click for Conf. Billing</a>
-  <a href="billing.html">Check Your Bills</a>
-</div>
+      <a href="index2.html">Click for Conf. Billing</a>
+      <a href="billing.html">Check Your Bills</a>
+    </div>
 
 <br>
 <h5>Mumbai Scheme Photo</h5>
@@ -257,8 +257,8 @@ document.getElementById("qpsForm").addEventListener("submit", function(e) {
       // Show spinner and disable button
       document.getElementById("loadingSpinner").style.display = "block";
       submitBtn.disabled = true;
-
-      fetch("https://script.google.com/macros/s/AKfycbyxj9L-kSk47u2B25qE7CrWgC4LZkZm_U7Ryw5yp6Ruy9twSSxCHKLrhtF8OEZveG6V/exec", {
+      // https://script.google.com/macros/s/AKfycbyxj9L-kSk47u2B25qE7CrWgC4LZkZm_U7Ryw5yp6Ruy9twSSxCHKLrhtF8OEZveG6V/exec
+      fetch("", {
         method: "POST",
         body: formData
       })
